@@ -1,0 +1,19 @@
+name: 'Slack User Lookup'
+description: 'Lookup the Slack profile info providing the email'
+inputs:
+  lookup-email:
+    description: 'Email of the user to lookup'
+    required: true
+  slack-token: 'Slack token to be used for the lookup'
+    required: true
+outputs:
+  slack-profile-info:
+    description: 'The details of the user, if found'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    LOOKUP_EMAIL: ${{ inputs.lookup-email }}
+    SLACK_TOKEN: ${{ inputs.slack-token }}
+
